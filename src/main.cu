@@ -338,17 +338,18 @@ int main(int argc, char **argv)
     }
 
     int port = 10973;
+    string address;
     char broker_ip[16];
     strcpy(broker_ip, "127.0.0.1");
 
     int command;
-    while ((command = getopt(argc, argv, "p:g:a:")) != -1)
+    while ((command = getopt(argc, argv, "p:g:a:w:")) != -1)
     {
         switch (command)
         {
         case 'p':
             port = atoi(optarg);
-            break;
+            break;§
         case 'a':
             if (is_valid_ip_address(optarg))
             {
@@ -359,7 +360,9 @@ int main(int argc, char **argv)
                 hostname_to_ip(broker_ip, optarg);
             }
             break;
-
+        case 'w':
+            address = w;
+            break;
         case 'g':
             for (int i = 0; i < gpu_count; i++)
             {
